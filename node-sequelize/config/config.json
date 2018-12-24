@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "alina",
+    "password": "qwer1234",
+    "database": "node_sequalize",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "root",
+    "password": "qwer1234",
+    "database": "node_sequalize",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "root",
+    "password": "qwer1234",
+    "database": "node_sequalize",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
