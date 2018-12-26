@@ -10,8 +10,8 @@ module.exports = {
           as: 'students'
         }],
         order: [
-          ['createdAt', 'DESC'],
-          [{ model: Student, as: 'students' }, 'createdAt', 'DESC'],
+          ['created_at', 'DESC'],
+          [{ model: Student, as: 'students' }, 'created_at', 'DESC'],
         ],
       })
       .then((classrooms) => res.status(200).send(classrooms))

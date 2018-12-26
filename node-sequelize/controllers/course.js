@@ -6,16 +6,8 @@ module.exports = {
   list(req, res) {
     return Course
       .findAll({
-        include: [{
-          model: Student,
-          as: 'students'
-        },{
-          model: Lecturer,
-          as: 'lecturer'
-        }],
         order: [
-          ['createdAt', 'DESC'],
-          [{ model: Student, as: 'students' }, 'createdAt', 'DESC'],
+          ['created_at', 'DESC'],
         ],
       })
       .then((courses) => res.status(200).send(courses))

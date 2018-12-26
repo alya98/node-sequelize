@@ -9,16 +9,20 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       classroom_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Classrooms',
+          key: 'id'
+        },
       },
       student_name: {
         type: Sequelize.STRING
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE
       }

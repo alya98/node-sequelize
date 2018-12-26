@@ -7,7 +7,7 @@ module.exports = {
       .findAll({
 
         order: [
-          ['createdAt', 'DESC'],
+          ['created_at', 'DESC'],
          
         ],
       })
