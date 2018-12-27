@@ -30,6 +30,7 @@ router.post('/api/lecturer', lecturerController.add);
 router.put('/api/lecturer/:id', lecturerController.update);
 router.delete('/api/lecturer/:id', lecturerController.delete);
 router.post('/api/lecturer/add_with_course', lecturerController.addWithCourse);
+router.put('/api/lecturer/:id/add_course', lecturerController.addCourse);
 
 router.get('/api/course', courseController.list);
 router.get('/api/course/:id', courseController.getById);

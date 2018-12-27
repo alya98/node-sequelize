@@ -59,7 +59,7 @@ module.exports = {
         }
         return lecturer
           .update({
-            lecturer_name: req.body.lecturer_name || classroom.lecturer_name,
+            lecturer_name: req.body.lecturer_name,
           })
           .then(() => res.status(200).send(lecturer))
           .catch((error) => res.status(400).send(error));
@@ -83,6 +83,7 @@ module.exports = {
       })
       .catch((error) => res.status(400).send(error));
   },
+
   addWithCourse(req, res) {
     return Lecturer
       .create({
@@ -91,10 +92,36 @@ module.exports = {
       }, {
         include: [{
           model: Course,
-          as: 'course_name'
+          as: 'course'
         }]
       })
       .then((lecturer) => res.status(201).send(lecturer))
+      .catch((error) => res.status(400).send(error));
+  },
+  addCourse(req, res) {
+    return Lecturer
+      .findById(req.params.id, {
+        include: [{
+          model: Course,
+          as: 'course'
+        }]
+      })
+      .then((lecturer) => {
+        if (!lecturer) {
+          return res.status(404).send({
+            message: 'Lecturer Not Found',
+          });
+        }
+
+        Course.findById(req.body.course_id).then((course) => {
+            if (!course) {
+              return res.status(404).send({
+                message: 'Course Not Found',
+              })
+            }
+          return course.update({lecturer_id: lecturer.id}).then(() => res.status(200).send(lecturer));
+        })
+      })
       .catch((error) => res.status(400).send(error));
   },
 };

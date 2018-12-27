@@ -16,12 +16,7 @@ module.exports = {
 
   getById(req, res) {
     return Course
-      .findById(req.params.id, {
-        include: [{
-          model: Course,
-          as: 'course'
-        }],
-      })
+      .findById(req.params.id)
       .then((course) => {
         if (!course) {
           return res.status(404).send({
@@ -44,12 +39,7 @@ module.exports = {
 
   update(req, res) {
     return Course
-      .findById(req.params.id, {
-        include: [{
-          model: Course,
-          as: 'course'
-        }],
-      })
+      .findById(req.params.id)
       .then(course => {
         if (!course) {
           return res.status(404).send({
